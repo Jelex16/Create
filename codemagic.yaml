@@ -18,11 +18,15 @@ workflows:
           - $HOME/.pub-cache
           - $HOME/ios/Pods
     scripts:
+      - name: Clean Flutter project
+        script: flutter clean
+      - name: Get Flutter dependencies
+        script: flutter pub get
       - name: Install CocoaPods dependencies
         script: |
           cd ios
           pod install
-      - name: Get Flutter dependencies
-        script: flutter pub get
+      - name: Run Flutter app for iOS
+        script: flutter run --release --no-sound-null-safety
     artifacts:
       - build/ios/iphoneos/*.ipa
