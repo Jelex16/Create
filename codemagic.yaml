@@ -1,0 +1,25 @@
+workflows:
+  ios:
+    name: Build iOS app
+    max_build_duration: 120
+    # Definir el entorno de compilación para iOS
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: true
+    scripts:
+      # Pasos previos al build
+      - name: Install dependencies
+        script: |
+          flutter pub get
+          cd ios
+          pod install --repo-update
+      # Construir la aplicación iOS
+      - name: Build iOS release
+        script: |
+          flutter build ios --release --no-codesign --target-platform=ios
+    artifacts:
+      - build/ios/iphoneos/*.ipa
+    publish:
+      branch: master
+      status: true

@@ -1,1 +1,9 @@
 platform :ios, '12.0'
+
+# Aquí puedes agregar las dependencias de tus pods
+target 'Runner' do
+  use_frameworks!
+  # Definir las dependencias de CocoaPods necesarias para tu proyecto
+  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
+end
