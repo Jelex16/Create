@@ -1,0 +1,10 @@
+export 'provider_images.dart';
+export 'provider_register.dart';
+export 'provider_auth.dart';
+export 'category_provider.dart';
+export 'offer_provider.dart';
+export 'location.dart';
+export 'request_provider.dart';
+export 'user_provider.dart';
+export 'provider_suscrip.dart';
+export 'addCard_provider.dart';
