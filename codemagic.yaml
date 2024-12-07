@@ -1,18 +1,16 @@
 workflows:
-  ios_release:
-    name: iOS release build
+  ios-release:
+    name: iOS Release Workflow
     max_build_duration: 60
-    environment:
-      flutter: stable
-    scripts:
-      - name: Install dependencies
-        script: |
-          flutter pub get
-          cd ios
-          pod install
-      - name: Build the iOS app
-        script: flutter build ios --release --no-codesign
-    artifacts:
-      - build/ios/iphoneos/Runner.app
+    platform: ios
+    flutter: stable
     ios:
-      minimum_ios_version: "13.0"
+      build_mode: release
+      output_dir: build/ios/iphoneos
+      ipa:
+        distribution_method: ad-hoc  # O 'app-store' si lo subes a la App Store
+        signing:
+          certificate: 'Apple Distribution'
+          provisioning_profile: 'path_to_your_provisioning_profile'
+    artifacts:
+      - build/ios/iphoneos/*.ipa
